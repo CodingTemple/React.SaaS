@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './index.css';
 
 import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes'
+import * as ROUTES from '../../constants/routes';
+import LogOutButton from '../Account/Logout';
 
 export default class Navigation extends Component {
   render() {
@@ -27,7 +28,7 @@ export default class Navigation extends Component {
               <Link className="nav-link" to={ROUTES.LOGIN}>Sign In</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/logout">Log Out</Link>
+              <LogOutButton />
             </li>
           </ul>
         </div>
