@@ -18,9 +18,6 @@ export default class Navigation extends Component {
             <li className="nav-item">
               <Link className="nav-link" to={ROUTES.HOME}>Home</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/pageTwo">Page Two</Link>
-            </li>
           </ul>
           <ul className="navbar-nav my-2 my-lg-0">
             <li className="nav-item">
