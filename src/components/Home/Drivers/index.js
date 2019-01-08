@@ -31,6 +31,13 @@ export default class Drivers extends Component {
     let newList = [];
 
     // if search bar isn't empty
+    // e.target.value !== '' ? newList = this.props.drivers.filter(driver => {
+    //   return driver.Driver.givenName.toLowerCase().includes(e.target.value.toLowerCase())
+    //     || driver.Driver.familyName.toLowerCase().includes(e.target.value.toLowerCase())
+    //     || driver.Constructors[0].nationality.toLowerCase().includes(e.target.value.toLowerCase())
+    //     || driver.Constructors[0].name.toLowerCase().includes(e.target.value.toLowerCase())
+    // }) : newList = this.props.drivers;
+
     if(e.target.value !== '') {
       // grab this.props.drivers to have a list to work with
       currentList = this.props.drivers;
