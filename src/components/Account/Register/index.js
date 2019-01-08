@@ -87,7 +87,8 @@ class RegistrationFormBase extends Component {
             placeholder="Confirm Password" 
           />
         </div>
-        <button disabled={isInvalid} type="submit">Register</button>
+        <hr />
+        <button className="btn btn-default" disabled={isInvalid} type="submit">Register</button>
         {error && 
           <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -10,7 +10,7 @@ import * as ROUTES from '../../../constants/routes';
 const LoginPage = () => (
   <div>
     <h1>Login Page</h1>
-
+    <LoginForm />
     <RegistrationLink />
   </div>
 )
@@ -39,13 +39,51 @@ class LoginFormBase extends Component {
       e.preventDefault();
   }
 
-  // onChange = e =>
-}
-
-export default class Login extends Component {
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  
   render() {
+    const { email, password, error } = this.state;
+    const isInvalid = password === '' || email === ''
+
     return (
-      <h1>Login Page</h1>
+      <form>
+        <div className="form-group">
+          <input
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            className="form-control"
+            type="text"
+            placeholder="Email Address"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            name="password"
+            value={password}
+            onChange={this.onChange}
+            className="form-control"
+            type="password"
+            placeholder="Password"
+          />
+          <hr />
+          <input className="btn btn-default" disabled={isInvalid} type="submit" value="Log In" />
+          {
+            error &&
+            <div className="alert alert-warning alert-dismissible fade show" role="alert">
+              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>{error && <p>{error.message}</p>}</strong>
+            </div>
+          }
+        </div>
+      </form>
     )
   }
 }
+
+const LoginForm = compose(withRouter, withFirebase)(LoginFormBase);
+
+export default LoginPage;
+export { LoginForm };
