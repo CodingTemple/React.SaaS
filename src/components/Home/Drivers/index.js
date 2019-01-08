@@ -13,9 +13,17 @@ export default class Drivers extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      filteredList: this.props.drivers
-    })
+    this.mounted = true;
+
+    if (this.mounted) {
+      this.setState({
+        filteredList: this.props.drivers
+      })
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   componentWillReceiveProps(nextProps) {

@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import * as ROUTES from '../../../constants/routes';
+import { withFirebase } from '../../Firebase';
 
 const RegistrationPage = () => (
   <div>
     <h1>Registration</h1>
+    <RegistrationForm />
   </div>
 );
 
@@ -17,7 +20,7 @@ const INITIAL_STATE = {
   error: null
 }
 
-export default class RegistrationForm extends Component {
+class RegistrationFormBase extends Component {
   constructor() {
     super()
     this.state = {
@@ -29,7 +32,10 @@ export default class RegistrationForm extends Component {
     const { username, email, passwordOne } = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => this.setState({ ...INITIAL_STATE }))
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE });
+        this.props.history.push(ROUTES.HOME);
+      })
       .catch(err => this.setState({ err }))
     e.preventDefault();
   };
@@ -82,18 +88,25 @@ export default class RegistrationForm extends Component {
           />
         </div>
         <button disabled={isInvalid} type="submit">Register</button>
-        {error &&
+        {error && 
           <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
             <strong>{error && <p>{error.message}</p>}</strong>
-          </div>}
+          </div>
+        }
       </form>
     )
   }
 }
 
-export const RegistrationLink = () => (
+const RegistrationLink = () => (
   <p>Don't have an account? <Link to={ROUTES.REGISTER}>Sign Up</Link></p>
 );
+
+const RegistrationForm = compose(withRouter, withFirebase)(RegistrationFormBase);
+
+export default RegistrationPage;
+
+export { RegistrationForm, RegistrationLink };
