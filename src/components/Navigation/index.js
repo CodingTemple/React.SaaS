@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './index.css';
 
 import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes'
+import * as ROUTES from '../../constants/routes';
+import LogOutButton from '../Account/Logout';
 
 export default class Navigation extends Component {
   render() {
@@ -18,9 +19,6 @@ export default class Navigation extends Component {
             <li className="nav-item">
               <Link className="nav-link" to={ROUTES.HOME}>Home</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/pageTwo">Page Two</Link>
-            </li>
           </ul>
           <ul className="navbar-nav my-2 my-lg-0">
             <li className="nav-item">
@@ -30,7 +28,7 @@ export default class Navigation extends Component {
               <Link className="nav-link" to={ROUTES.LOGIN}>Sign In</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/logout">Log Out</Link>
+              <LogOutButton />
             </li>
           </ul>
         </div>

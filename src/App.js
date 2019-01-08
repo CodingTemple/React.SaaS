@@ -6,7 +6,6 @@ import * as ROUTES from './constants/routes';
 
 import Navigation from './components/Navigation';
 import Home from './components/Home';
-import PageTwo from './components/PageTwo';
 import Landing from './components/Landing';
 import Login from './components/Account/Login';
 import Register from './components/Account/Register';
@@ -24,7 +23,6 @@ class App extends Component {
             <div className="container">
               <Route exact path={ROUTES.LANDING} component={Landing}></Route>
               <Route path={ROUTES.HOME} component={Home}></Route>
-              <Route path={"/pageTwo"} component={PageTwo}></Route>
               <Route path={ROUTES.LOGIN} component={Login}></Route>
               <Route path={ROUTES.REGISTER} component={Register}></Route>
               <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}></Route>
