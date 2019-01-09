@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { RegistrationLink } from '../Register';
+import PasswordForgetLink from '../PasswordForget';
 import { withFirebase } from '../../Firebase';
 
 import * as ROUTES from '../../../constants/routes';
@@ -11,6 +12,7 @@ const LoginPage = () => (
   <div>
     <h1>Login Page</h1>
     <LoginForm />
+    <PasswordForgetLink />
     <RegistrationLink />
   </div>
 )
