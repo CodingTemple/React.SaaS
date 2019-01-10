@@ -4,9 +4,14 @@ import './index.css';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import LogOutButton from '../Account/Logout';
+import { AuthUserContext } from '../Session';
 
-const Navigation = ({ authUser }) => (
-  <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
+const Navigation = () => (
+  <div>
+    <AuthUserContext.Consumer>
+      {authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth />}
+    </AuthUserContext.Consumer>
+  </div>
 )
 
 const NavigationAuth = () => (
@@ -23,6 +28,9 @@ const NavigationAuth = () => (
         </li>
         <li className="nav-item">
           <Link className="nav-link" to={ROUTES.ACCOUNT}>Account</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to={ROUTES.ADMIN}>Admin</Link>
         </li>
       </ul>
       <ul className="navbar-nav my-2 my-lg-0">
