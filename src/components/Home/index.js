@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Drivers from './Drivers';
 
-import { withAuthorization } from '../Session';
+import { withAuthorization, AuthUserContext } from '../Session';
 
 class Home extends Component {
   constructor() {
@@ -24,7 +24,14 @@ class Home extends Component {
 
   render() {
     return (
-      <Drivers drivers={this.state.drivers} />
+      <AuthUserContext.Consumer>
+        {authUser => (
+          <div>
+            <h1>Welcome, {authUser.username}</h1>
+            <Drivers drivers={this.state.drivers} />
+          </div>
+        )}
+      </AuthUserContext.Consumer>
     )
   }
 }

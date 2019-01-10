@@ -29,11 +29,15 @@ class RegistrationFormBase extends Component {
   }
 
   onSubmit = e => {
-    // const { username, email, passwordOne } = this.state;
-    const { email, passwordOne } = this.state;
+    const { username, email, passwordOne } = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        return this.props.firebase
+          .user(authUser.user.uid)
+          .set({ username, email })
+      })
+      .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
@@ -55,7 +59,7 @@ class RegistrationFormBase extends Component {
             onChange={this.onChange} 
             type="text" 
             className="form-control" 
-            placeholder="Full Name" 
+            placeholder="Username" 
           />
         </div>
         <div className="form-group">
