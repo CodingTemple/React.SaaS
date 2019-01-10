@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Drivers from './Drivers';
 
-export default class Home extends Component {
+import { withAuthorization } from '../Session';
+
+class Home extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,3 +28,7 @@ export default class Home extends Component {
     )
   }
 }
+
+const condition = authUser => !!authUser
+
+export default withAuthorization(condition)(Home)

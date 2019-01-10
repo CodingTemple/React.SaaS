@@ -10,7 +10,7 @@ import * as ROUTES from '../../../constants/routes';
 
 const LoginPage = () => (
   <div>
-    <h1>Login Page</h1>
+    <h1>Login</h1>
     <LoginForm />
     <PasswordForgetLink />
     <RegistrationLink />
@@ -38,7 +38,7 @@ class LoginFormBase extends Component {
         this.props.history.push(ROUTES.HOME);
       })
       .catch(err => this.setState({ err }));
-      e.preventDefault();
+    e.preventDefault();
   }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -48,14 +48,14 @@ class LoginFormBase extends Component {
     const isInvalid = password === '' || email === ''
 
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <div className="form-group">
           <input
             name="email"
             value={email}
             onChange={this.onChange}
             className="form-control"
-            type="text"
+            type="email"
             placeholder="Email Address"
           />
         </div>

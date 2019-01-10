@@ -6,11 +6,13 @@ import * as ROUTES from './constants/routes';
 
 import Navigation from './components/Navigation';
 import Home from './components/Home';
+import Admin from './components/Account/Admin';
 import Landing from './components/Landing';
 import Login from './components/Account/Login';
 import Register from './components/Account/Register';
 import PasswordForget from './components/Account/PasswordForget';
 import { withAuthentication } from './components/Session';
+import Account from './components/Account';
 
 const App = () => (
   <Router>
@@ -23,6 +25,8 @@ const App = () => (
           <Route exact path={ROUTES.LANDING} component={Landing}></Route>
           <Route path={ROUTES.HOME} component={Home}></Route>
           <Route path={ROUTES.LOGIN} component={Login}></Route>
+          <Route path={ROUTES.ADMIN} component={Admin}></Route>
+          <Route path={ROUTES.ACCOUNT} component={Account}></Route>
           <Route path={ROUTES.REGISTER} component={Register}></Route>
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}></Route>
         </div>
